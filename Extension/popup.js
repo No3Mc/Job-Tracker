@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Initialize an array to store job data
     let jobData = [];
     let clickCount = 0;
-  
+    let jobCount = 0;
 
 
 
@@ -27,7 +27,8 @@ document.addEventListener("DOMContentLoaded", function () {
         function: () => {
           const h1Element = document.querySelector(".t-24.t-bold.job-details-jobs-unified-top-card__job-title");
           const h1Content = h1Element ? h1Element.textContent.trim() : "N/A";
-          chrome.runtime.sendMessage({ jobDescription: h1Content });
+          const pageURL = window.location.href; // Get the URL of the current page
+          chrome.runtime.sendMessage({ jobDescription: h1Content, jobLink: pageURL }); // Send the page URL along with job description
         },
       });
     }
@@ -55,10 +56,10 @@ document.addEventListener("DOMContentLoaded", function () {
       chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
         const activeTab = tabs[0];
         updateJobData(activeTab);
-  
+    
         clickCount++;
         clickCountElement.textContent = `Click Count: ${clickCount}`;
-  
+    
         // Save the click count to local storage
         chrome.storage.local.set({ clickCount: clickCount });
       });
@@ -80,21 +81,21 @@ document.addEventListener("DOMContentLoaded", function () {
   
     chrome.runtime.onMessage.addListener(function (message) {
       if (message.jobDescription) {
-        const jobLink = "Link";
         const jobDescriptionContent = message.jobDescription;
-        
+        const jobLink = message.jobLink || "#";
+    
         // Create a new list item with a link
         const listItem = document.createElement("li");
         listItem.innerHTML = `${jobDescriptionContent} <a href="${jobLink}" target="_blank">Link</a>`;
-        
+    
         // Get the ordered list element
         const orderedList = document.getElementById("job-list");
-        
+    
         // Append the list item to the ordered list
         orderedList.appendChild(listItem);
-        
+    
         // Save the updated job data to local storage
-        jobData.push({ jobLink, jobDescription: jobDescriptionContent });
+        jobData.push({ jobDescription: jobDescriptionContent, jobLink });
         chrome.storage.local.set({ jobData: jobData });
       }
     });
