@@ -1,0 +1,32 @@
+body, button, p {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    width: 300px;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px;
+}
+
+button {
+    font-size: 18px;
+    width: 40px;
+    height: 40px;
+}
+
+#job-description p {
+    margin: 10px 0;
+    font-size: 14px;
+}
+
+#link-text {
+    margin: 10px 0;
+    font-size: 14px;
+    text-align: center;
+}
