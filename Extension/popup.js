@@ -32,11 +32,22 @@ document.addEventListener("DOMContentLoaded", function () {
       function: () => {
         const h1Element = document.querySelector(".t-24.t-bold.job-details-jobs-unified-top-card__job-title");
         const h1Content = h1Element ? h1Element.textContent.trim() : "N/A";
+  
+        const jobDescriptionElement = document.querySelector(".job-details-jobs-unified-top-card__primary-description");
+        const jobDescriptionContent = jobDescriptionElement ? jobDescriptionElement.textContent.trim() : "N/A";
+  
         const pageURL = window.location.href; // Get the URL of the current page
-        chrome.runtime.sendMessage({ jobDescription: h1Content, jobLink: pageURL }); // Send the page URL along with job description
+  
+        chrome.runtime.sendMessage({
+          jobTitle: h1Content,
+          jobDescription: jobDescriptionContent,
+          jobLink: pageURL
+        }); // Send the page URL along with job description and title
       },
     });
   }
+  
+  
   
   function updateJobList() {
     jobList.innerHTML = "";
