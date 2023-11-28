@@ -1,61 +1,78 @@
 body, button, p {
-    margin: 0;
-    padding: 0;
-  }
-  
-  .container {
-    width: 360px; 
-    font-family: Arial, sans-serif;
-    background-color: #dccfcf; 
-    color: #FFFFFF; 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
+  margin: 0;
+  padding: 0;
+}
 
-  }
-  
-  button {
-    font-size: 18px;
-    width: 120px; 
-    height: 40px;
-    background: linear-gradient(to bottom, #7D00A3, #E3008C);
-    color: #FFFFFF;
-    border: none;
-    cursor: pointer;
-    margin: 0 10px;
-  }
-  
-  button:hover {
-    background: linear-gradient(to bottom, #E3008C, #7D00A3); 
-  }
-  
-  #job-description p {
-    margin: 10px 0;
-    font-size: 14px;
-    color: #FFFFFF; 
-    text-align: center;
-  }
-  
-  #link-text {
-    margin: 10px 0;
-    font-size: 14px;
-    text-align: center;
-    color: #FFFFFF;
-  }
-  #click-count {
-    text-align: center; 
-    font-size: 18px; 
-    color: #000000;
-  }
+html, body {
+  min-height: 100%;
+  overflow: hidden;
+  padding: 0;
+  margin: 0;
+}
 
+.container {
+  width: 360px; 
+  font-family: Arial, sans-serif;
+  background-color: #dccfcf;
+  color: #000000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start; 
+  overflow: hidden; 
+}
 
+.button-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
 
+button {
+  font-size: 18px;
+  min-width: 150px;
+  padding: 10px 20px;
+  background: linear-gradient(to bottom, #7D00A3, #E3008C);
+  color: #FFFFFF;
+  border: none;
+  cursor: pointer;
+  margin: 10px 0;
+  border-radius: 5px;
+  transition: background 0.3s ease;
+}
 
+button:hover {
+  background: linear-gradient(to bottom, #E3008C, #7D00A3);
+}
 
+.job-list-container {
+  max-height: 200px; 
+  width: 100%; 
+  overflow-y: auto; 
+  transition: max-height 0.3s ease;
+}
 
+.job-list-wrapper {
+  max-height: 100%;
+}
 
+#job-description p {
+  margin: 10px 0;
+  font-size: 14px;
+  color: #FFFFFF;
+  text-align: center;
+}
 
+#link-text {
+  margin: 10px 0;
+  font-size: 14px;
+  text-align: center;
+  color: #FFFFFF;
+}
 
-
+#click-count {
+  text-align: center;
+  font-size: 18px;
+  color: #000000;
+}

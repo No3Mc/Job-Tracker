@@ -8,27 +8,24 @@
     <link rel="stylesheet" type="text/css" href="popup.css">
 </head>
 <body>
-    <button id="pin-button">Pin</button>
+    <div class="container">
+        <div class="button-container">
+            <button id="pin-button">Pin</button>
+            <button id="plus-button">Applied</button>
+            <button id="minus-button">Clear All</button>
+            <button id="show-hide-button">Show</button>
+            <button id="export-button">Export to Excel</button>
+        </div>
+        <div class="job-list-container">
+            <div class="job-list-wrapper">
+                <ol id="job-list"></ol>
+            </div>
+        </div>
 
-    <button id="plus-button">Applied</button>
-    <button id="minus-button">Clear All</button>
-    <button id="show-hide-button">Show</button>
-    <button id="export-button">Export to Excel</button>
-
-    <p id="click-count">Click Count: 0</p>
-
-    <ol id="job-list"></ol>
-
-
-
-    <div id="job-description"></div>
-
-
-
-    <p id="link-text"></p>
-
-
+        <p id="click-count">Click Count: 0</p>
+        <div id="job-description"></div>
+        <p id="link-text"></p>
+    </div>
     <script src="popup.js"></script>
-
 </body>
 </html>
