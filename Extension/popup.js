@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const clickCountElement = document.getElementById("click-count");
   const showHideButton = document.getElementById("show-hide-button");
   const exportButton = document.getElementById("export-button");
-
+  const pinButton = document.getElementById("pin-button");
 
   
   // Initialize an array to store job data
@@ -50,7 +50,42 @@ document.addEventListener("DOMContentLoaded", function () {
       jobList.appendChild(listItem);
     }
   }
+
+
+
+  let isPinned = false;
+
+  // Function to restore the UI to its normal state
+  function restoreUI() {
+    plusButton.style.display = "block";
+    minusButton.style.display = "block";
+    showHideButton.style.display = "block";
+    exportButton.style.display = "block";
+    clickCountElement.style.display = "block";
+  }
   
+// Add an event listener to the pin button
+pinButton.addEventListener("click", function () {
+  if (isPinned) {
+    // If already pinned, restore the UI to normal state
+    restoreUI();
+    isPinned = false;
+    plusButton.textContent = "Applied"
+    pinButton.innerHTML = `<img src="images/pin.png" alt="Pin Icon"> Pin`;
+  } else {
+    // plusButton.style.display = "block";
+    plusButton.innerHTML = `<img src="images/true.gif" alt="True Icon">`;
+    minusButton.style.display = "none";
+    showHideButton.style.display = "none";
+    exportButton.style.display = "none";
+    jobList.style.display = "none";
+    jobDescription.style.display = "none";
+
+    clickCountElement.style.display = "block";
+    isPinned = true;
+    pinButton.textContent = "Unpin";
+  }
+});
 
 
   // Load saved job data, click count, and job count from local storage if available
@@ -62,7 +97,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (result.clickCount !== undefined) {
       clickCount = result.clickCount;
-      clickCountElement.textContent = `Click Count: ${clickCount}`;
+      clickCountElement.textContent = `Applications: ${clickCount}`;
     }
 
     if (result.jobCount !== undefined) {
