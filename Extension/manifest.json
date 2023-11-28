@@ -1,8 +1,8 @@
 {
     "manifest_version": 3,
-    "name": "Simple Extension",
+    "name": "Job Tracking Pro by No3Mc - Manage Job Applications & Interviews",
     "version": "1.0",
-    "description": "A simple browser extension with plus and minus buttons.",
+    "description": "Job Tracking Pro by No3Mc is a powerful Chrome extension designed to streamline your job search process. With this extension, you can effortlessly manage your job applications, keep track of important details, and stay organized throughout your job hunt journey.\n\nKey Features:\n\n- Effortless Job Tracking: Seamlessly track your job applications, deadlines, and interview schedules in one convenient place.\n\n- Automated Job Details: Job Tracking Pro automatically fetches job titles, making it easy to identify and organize your applications.\n\n- Data Export: Easily export your job application data to an Excel file, ensuring you have a comprehensive record of your job search.\n\n- Click Count: Stay informed about your job search activity with a click count feature.\n\n- Show/Hide Job List: Manage your workspace efficiently by toggling the visibility of your job list.\n\nWhether you're actively job hunting or just want to keep your job applications well-organized, Job Tracking Pro is here to simplify the process. Take control of your job search today with this user-friendly extension.\n\nDownload Job Tracking Pro now and make your job search journey more productive and organized!",
     "permissions": [
         "activeTab",
         "scripting",
