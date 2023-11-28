@@ -5,8 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Your Extension</title>
     <script src="xlsx.full.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="popup.css">
 </head>
 <body>
+    <button id="pin-button">Pin</button>
+
     <button id="plus-button">Applied</button>
     <button id="minus-button">Clear All</button>
     <button id="show-hide-button">Show</button>
@@ -14,7 +17,8 @@
 
     <p id="click-count">Click Count: 0</p>
 
-    <div id="job-list"></div>
+    <ol id="job-list"></ol>
+
 
     <div id="job-description"></div>
 

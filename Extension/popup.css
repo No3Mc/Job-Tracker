@@ -1,32 +1,61 @@
 body, button, p {
     margin: 0;
     padding: 0;
-}
-
-body {
-    width: 300px;
+  }
+  
+  .container {
+    width: 360px; 
     font-family: Arial, sans-serif;
-}
-
-.container {
+    background-color: #dccfcf; 
+    color: #FFFFFF; 
     display: flex;
-    justify-content: space-between;
-    margin: 20px;
-}
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
 
-button {
+  }
+  
+  button {
     font-size: 18px;
-    width: 40px;
+    width: 120px; 
     height: 40px;
-}
-
-#job-description p {
+    background: linear-gradient(to bottom, #7D00A3, #E3008C);
+    color: #FFFFFF; /* White text color */
+    border: none;
+    cursor: pointer;
+    margin: 0 10px;
+  }
+  
+  button:hover {
+    background: linear-gradient(to bottom, #E3008C, #7D00A3); 
+  }
+  
+  #job-description p {
     margin: 10px 0;
     font-size: 14px;
-}
-
-#link-text {
+    color: #FFFFFF; 
+    text-align: center;
+  }
+  
+  #link-text {
     margin: 10px 0;
     font-size: 14px;
     text-align: center;
-}
+    color: #FFFFFF;
+  }
+  #click-count {
+    text-align: center; 
+    font-size: 18px; 
+    color: #000000;
+  }
+
+
+
+
+
+
+
+
+
+
