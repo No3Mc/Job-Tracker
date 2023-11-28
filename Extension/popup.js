@@ -22,34 +22,16 @@ document.addEventListener("DOMContentLoaded", function () {
     showHideButton.textContent = "Show Job List";
   
     function updateJobData(tab) {
-        const newJobData = { jobLink: tab.url || "N/A", jobDescription: "N/A" };
-      
-        chrome.scripting.executeScript({
-          target: { tabId: tab.id },
-          function: () => {
-            const h1Element = document.querySelector(".t-24.t-bold.job-details-jobs-unified-top-card__job-title");
-            const h1Content = h1Element ? h1Element.textContent.trim() : "N/A";
-            chrome.runtime.sendMessage({ jobDescription: h1Content });
-          },
-        });
-      
-        jobData.push(newJobData);
-      
-        // Get the ordered list element
-        const orderedList = document.getElementById("job-list");
-      
-        // Create a new list item with a link
-        const listItem = document.createElement("li");
-        const jobLink = newJobData.jobLink;
-        const jobDescriptionContent = newJobData.jobDescription;
-        listItem.innerHTML = `${jobDescriptionContent} <a href="${jobLink}" target="_blank">Link</a>`;
-      
-        // Append the list item to the ordered list
-        orderedList.appendChild(listItem);
-      
-        // Save the updated job data to local storage
-        chrome.storage.local.set({ jobData: jobData });
-      }
+      chrome.scripting.executeScript({
+        target: { tabId: tab.id },
+        function: () => {
+          const h1Element = document.querySelector(".t-24.t-bold.job-details-jobs-unified-top-card__job-title");
+          const h1Content = h1Element ? h1Element.textContent.trim() : "N/A";
+          chrome.runtime.sendMessage({ jobDescription: h1Content });
+        },
+      });
+    }
+    
   
     // Load saved job data and click count from local storage if available
     chrome.storage.local.get(["jobData", "clickCount"], function (result) {
@@ -98,13 +80,22 @@ document.addEventListener("DOMContentLoaded", function () {
   
     chrome.runtime.onMessage.addListener(function (message) {
       if (message.jobDescription) {
-        jobData[jobData.length - 1].jobDescription = message.jobDescription;
-  
+        const jobLink = "Link";
+        const jobDescriptionContent = message.jobDescription;
+        
+        // Create a new list item with a link
+        const listItem = document.createElement("li");
+        listItem.innerHTML = `${jobDescriptionContent} <a href="${jobLink}" target="_blank">Link</a>`;
+        
+        // Get the ordered list element
+        const orderedList = document.getElementById("job-list");
+        
+        // Append the list item to the ordered list
+        orderedList.appendChild(listItem);
+        
         // Save the updated job data to local storage
+        jobData.push({ jobLink, jobDescription: jobDescriptionContent });
         chrome.storage.local.set({ jobData: jobData });
-  
-        const jobLink = jobData[jobData.length - 1].jobLink;
-        jobList.innerHTML += `<p>${message.jobDescription} <a href="${jobLink}" target="_blank">Link</a></p>`;
       }
     });
   
