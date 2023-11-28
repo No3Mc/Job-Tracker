@@ -79,7 +79,7 @@ pinButton.addEventListener("click", function () {
     pinButton.innerHTML = `<img src="images/pin.png" alt="Pin Icon"> Pin`;
   } else {
     // plusButton.style.display = "block";
-    plusButton.innerHTML = `<img src="images/true.gif" alt="True Icon">`;
+    plusButton.innerHTML = `<img src="images/check.png" alt="Check Icon">`;
     minusButton.style.display = "none";
     showHideButton.style.display = "none";
     exportButton.style.display = "none";
