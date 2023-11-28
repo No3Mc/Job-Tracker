@@ -15,7 +15,12 @@ document.addEventListener("DOMContentLoaded", function () {
   let jobCount = 0;
 
 
-
+  function getCurrentDateTime() {
+    const now = new Date();
+    const formattedDate = moment(now).format("YYYY-MM-DD HH:mm:ss");
+    return formattedDate;
+  }
+  
   
   // Initially hide the job list and set the button text
   jobList.style.display = "none";
@@ -109,20 +114,22 @@ pinButton.addEventListener("click", function () {
     chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
       const activeTab = tabs[0];
       updateJobData(activeTab);
-
+  
       // Increment job count here
       jobCount++;
-
-      // Update the job list
+  
+      // Update the job list with timestamped job descriptions from jobData
       updateJobList();
-
+  
       clickCount++;
-      clickCountElement.textContent = `Click Count: ${clickCount}`;
-
+      clickCountElement.textContent = `Applications: ${clickCount}`;
+  
       // Save the job count to local storage
       chrome.storage.local.set({ clickCount: clickCount, jobCount: jobCount });
     });
   });
+  
+  
 
   minusButton.addEventListener("click", function () {
     jobData = [];
@@ -143,21 +150,21 @@ pinButton.addEventListener("click", function () {
       const jobDescriptionContent = message.jobDescription;
       const jobLink = message.jobLink || "#";
   
-      // Create a new list item with a link
+      // Store the jobLink along with the timestamped job description
+      const timestamp = getCurrentDateTime();
+      const jobDescriptionWithTimestamp = `(${timestamp}) ${jobDescriptionContent}`;
+      jobData.push({ jobDescription: jobDescriptionWithTimestamp, jobLink });
+  
+      // Add the job to the job list
       const listItem = document.createElement("li");
-      listItem.innerHTML = `${jobDescriptionContent} <a href="${jobLink}" target="_blank">Link</a>`;
-  
-      // Get the ordered list element
-      const orderedList = document.getElementById("job-list");
-  
-      // Append the list item to the ordered list
-      orderedList.appendChild(listItem);
+      listItem.innerHTML = `${jobDescriptionWithTimestamp} <a href="${jobLink}" target="_blank">Link</a>`;
+      jobList.appendChild(listItem);
   
       // Save the updated job data to local storage
-      jobData.push({ jobDescription: jobDescriptionContent, jobLink });
       chrome.storage.local.set({ jobData: jobData });
     }
   });
+  
 
   // Add a click event listener to the show-hide button
   showHideButton.addEventListener("click", function () {
