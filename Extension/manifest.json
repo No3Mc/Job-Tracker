@@ -1,8 +1,8 @@
 {
     "manifest_version": 3,
-    "name": "Job Tracking Pro by No3Mc - Manage Job Applications & Interviews",
+    "name": "Job Tracker Pro by No3Mc - Manage Job Applications",
     "version": "1.0",
-    "description": "Job Tracking Pro by No3Mc is a powerful extension designed to manage Applications!",
+    "description": "Job Tracker Pro by No3Mc is a powerful extension designed to manage Applications!",
     "permissions": [
         "activeTab",
         "scripting",
