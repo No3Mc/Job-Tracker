@@ -15,6 +15,22 @@ document.addEventListener("DOMContentLoaded", function () {
   let jobCount = 0;
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   function getCurrentDateTime() {
     const now = new Date();
     const formattedDate = moment(now).format("YYYY-MM-DD HH:mm:ss");
@@ -150,7 +166,7 @@ pinButton.addEventListener("click", function () {
     chrome.storage.local.remove("jobData");
 
     clickCount = 0;
-    clickCountElement.textContent = `Click Count: ${clickCount}`;
+    clickCountElement.textContent = `Applications: ${clickCount}`;
 
     // Clear the click count from local storage
     chrome.storage.local.remove("clickCount");
